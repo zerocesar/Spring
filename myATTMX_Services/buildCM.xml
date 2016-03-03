@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project name="myATTMX_Services" default="dist" basedir=".">
+	<target name="init">
+		<echo>Java/JVM version: ${ant.java.version}</echo>
+		<loadproperties srcFile="${file.properties}"/>
+		<property name="dir_base" value="${basedir}" />
+		<property name="dist.dir" value="${dir_base}/dist/" />
+		<property name="build.dir" value="${dir_base}/build/" />
+		<property name="classesdir" value="${dir_base}/build/classes" />
+		<property name="src.dir" value="${dir_base}/src" />
+		<!--property name="rsc.dir" value="${dir_base}/resources" /-->
+		<property name="web.dir" value="${dir_base}/WebContent" />
+		<property name="srv.jar.dir" value="${dir_base}/srvlib" />
+		<property name="srv.build.dir" value="${dir_base}/srv_build" />
+		<property name="srv.lib" value="${server.wls.10_3}" />
+		<property name="encoding" value="${encoding.mattmxs.code}" />
+		<property name="warFile" value="${bin.mattmxs.war}" />
+	</target>
+
+    <target name="-clean" depends="init">
+		<delete dir="${dist.dir}"/>
+        <delete dir="${build.dir}"/>
+    </target>
+ 
+	<!-- Compilacion -->
+    <target name="-compile">
+        <mkdir dir="${classesdir}"/>
+        <javac destdir="${classesdir}" includeantruntime="false" 
+        	debug="true" debuglevel="lines,vars,source" encoding="${encoding}" >
+        	<classpath>
+				<fileset dir="${web.dir}/WEB-INF/lib" includes="**/*.jar" />
+				<fileset dir="${srv.lib}" includes="**/*.jar" />
+			</classpath>
+            <src path="${src.dir}"/>
+        </javac>
+        <copy todir="${classesdir}">
+        	<fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>
+    </target>
+ 
+	<!-- Generacion de archivo war -->
+    <target name="dist" depends="-clean, -compile">
+        <mkdir dir="${dist.dir}"/>
+        <war destfile="${dist.dir}/${warFile}"
+             basedir="${web.dir}">
+            <classes dir="${classesdir}"/>
+        </war>
+    </target>	
+</project>
