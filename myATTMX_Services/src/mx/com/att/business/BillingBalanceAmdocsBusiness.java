@@ -20,11 +20,11 @@ public class BillingBalanceAmdocsBusiness {
 	private static final Logger LOGGER = Logger.getLogger(BillingBalanceAmdocsBusiness.class);
 	private static final ValidatorATT VALIDATOR = new ValidatorATT();
 	private static final LogInObjectsContents PRINTLOGOBJECT = new LogInObjectsContents();
-	
+
 	public String getAvailableActions(final String cadenaJson){
 
 		LOGGER.info("Comienza la ejecucion del metodo getAvailableActions de la clase BillingBalanceAmdocsBusiness");
-		
+
 		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
 		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
 
@@ -44,7 +44,7 @@ public class BillingBalanceAmdocsBusiness {
 			responseVO.setCode(ATTConstants.CODIGO_EXITO);
 			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
 			responseVO.setObjectResponse(response);
-			
+
 			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 
 		}catch (ValidateException validateException) {
@@ -60,11 +60,11 @@ public class BillingBalanceAmdocsBusiness {
 
 		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
 	}
-		
+
 	public String getAvailableProducts(final String cadenaJson){
 
 		LOGGER.info("Comienza la ejecucion del metodo getAvailableProducts de la clase BillingBalanceAmdocsBusiness");
-		
+
 		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
 		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
 
@@ -74,7 +74,7 @@ public class BillingBalanceAmdocsBusiness {
 		try{
 			VALIDATOR.validateEmptyString(requestVO.getProductIds(),"productId");
 			VALIDATOR.validateEmptyString(requestVO.getId(),"id");
-//			VALIDATOR.validateEmptyString(requestVO.getRp(),"rp");
+			//			VALIDATOR.validateEmptyString(requestVO.getRp(),"rp");
 
 			PRINTLOGOBJECT.logObject(requestVO, "REQUEST");
 
@@ -85,7 +85,7 @@ public class BillingBalanceAmdocsBusiness {
 			responseVO.setCode(ATTConstants.CODIGO_EXITO);
 			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
 			responseVO.setObjectResponse(response);
-			
+
 			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 
 		}catch (ValidateException validateException) {
@@ -101,11 +101,11 @@ public class BillingBalanceAmdocsBusiness {
 
 		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
 	}
-	
+
 	public String setConfiguration(final String cadenaJson){
 
 		LOGGER.info("Comienza la ejecucion del metodo setConfiguration de la clase BillingBalanceAmdocsBusiness");
-		
+
 		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
 		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
 
@@ -125,7 +125,7 @@ public class BillingBalanceAmdocsBusiness {
 			responseVO.setCode(ATTConstants.CODIGO_EXITO);
 			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
 			responseVO.setObjectResponse(response);
-			
+
 			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 
 		}catch (ValidateException validateException) {
@@ -141,11 +141,11 @@ public class BillingBalanceAmdocsBusiness {
 
 		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
 	}	
-		
+
 	public String getLastInvoice(final String cadenaJson){
 
 		LOGGER.info("Comienza la ejecucion del metodo getLastInvoice de la clase BillingBalanceAmdocsBusiness");
-		
+
 		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
 		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
 
@@ -166,7 +166,7 @@ public class BillingBalanceAmdocsBusiness {
 			responseVO.setCode(ATTConstants.CODIGO_EXITO);
 			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
 			responseVO.setObjectResponse(response);
-			
+
 			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 
 		}catch (ValidateException validateException) {
@@ -182,11 +182,11 @@ public class BillingBalanceAmdocsBusiness {
 
 		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
 	}
-	
+
 	public String getLastTotalBill(final String cadenaJson){
 
 		LOGGER.info("Comienza la ejecucion del metodo getLastTotalBill de la clase BillingBalanceAmdocsBusiness");
-		
+
 		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
 		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
 
@@ -205,7 +205,7 @@ public class BillingBalanceAmdocsBusiness {
 			responseVO.setCode(ATTConstants.CODIGO_EXITO);
 			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
 			responseVO.setObjectResponse(lastTotalBill);
-			
+
 			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 
 		}catch (ValidateException validateException) {
@@ -221,4 +221,45 @@ public class BillingBalanceAmdocsBusiness {
 
 		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
 	}
+
+	public String getServicesByChannelMobileAMDOCS(final String cadenaJson){
+
+		LOGGER.info("Comienza la ejecucion del metodo getServicesByChannelMobileAMDOCS de la clase BillingBalanceAmdocsBusiness");
+
+		final String jsonRequest = VALIDATOR.validateRequestString(cadenaJson);
+		LOGGER.info(ATTConstants.CAD_JSON_ENT +  jsonRequest);
+
+		final ResponseVO responseVO = new ResponseVO();
+		RequestAmdocVO requestVO = new Gson().fromJson(jsonRequest, RequestAmdocVO.class);
+
+		try{
+			VALIDATOR.validateEmptyString(requestVO.getProductIds(),"productIds");
+			VALIDATOR.validateEmptyString(requestVO.getId(),"id"); 
+
+			PRINTLOGOBJECT.logObject(requestVO, "REQUEST");
+
+			final ProductsAvailableActions response = SetObjectsAmdocs.getAvailableActions();
+
+			PRINTLOGOBJECT.logObject(response, "RESPONSE"); 
+
+			responseVO.setCode(ATTConstants.CODIGO_EXITO);
+			responseVO.setMessageCode(ATTConstants.DESC_EXITO);
+			responseVO.setObjectResponse(response);
+
+			LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
+
+		}catch (ValidateException validateException) {
+			responseVO.setCode(ATTConstants.CODIGO_ERROR_NUM_INV);
+			responseVO.setMessageCode(validateException.getMessage());
+			LOGGER.error("Cadena JSON de salida: " + new Gson().toJson(responseVO));
+		}       
+		catch (Exception exception) {
+			responseVO.setCode(ATTConstants.CODIGO_ERROR_NUM_INV);
+			responseVO.setMessageCode(exception.getMessage());
+			LOGGER.error("Cadena JSON de salida: " + new Gson().toJson(responseVO));
+		}       
+
+		return VALIDATOR.validateResponseString(new Gson().toJson(responseVO));
+	}
+
 }

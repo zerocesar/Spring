@@ -2,7 +2,9 @@ package mx.com.att.utils;
 
 import mx.com.att.vo.GetBasicCustomerInfo;
 import mx.com.att.vo.amdocs.GetLastInvoiceInfo;
+import mx.com.att.vo.amdocs.GetPasscode;
 import mx.com.att.vo.amdocs.ProductsAvailableActions;
+import mx.com.att.vo.amdocs.UpdatePasscode;
 import mx.com.att.vo.amdocs.UpdateProdConfigRes;
 import mx.com.att.vo.amdocs.ValidateNewOfferingConfigurationResponse;
 import mx.com.att.vo.amdocs.Product;
@@ -11,6 +13,9 @@ import mx.com.att.vo.amdocs.ResponseCallDetailsVO;
 import mx.com.att.vo.amdocs.GetAllowance;
 import mx.com.att.vo.amdocs.GetBalance;
 import mx.com.att.vo.amdocs.GetNumberOfHandsets;
+import mx.com.att.vo.amdocs.VerifyInvoiceZipCode;
+import mx.com.att.vo.amdocs.VerifyPersonalZipCode;
+import mx.com.att.vo.amdocs.VerifyRFC;
 
 public class SetObjectsAmdocs {
     
@@ -119,6 +124,66 @@ public class SetObjectsAmdocs {
 
 		SetObjectsContents setObject = new SetObjectsContents();		
 		setObject.fillObject(response, "GetNumberOfHandsets", false);
+
+		return response;
+	}
+	
+	public static VerifyPersonalZipCode verifyPersonalZipCode ()
+	{
+		VerifyPersonalZipCode response = new VerifyPersonalZipCode();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "VerifyPersonalZipCode", false);
+
+		return response;
+	}
+	
+	public static VerifyRFC verifyRFC ()
+	{
+		VerifyRFC response = new VerifyRFC();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "VerifyRFC", false);
+
+		return response;
+	}
+	
+	public static VerifyInvoiceZipCode verifyInvoiceZipCode ()
+	{
+		VerifyInvoiceZipCode response = new VerifyInvoiceZipCode();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "VerifyInvoiceZipCode", false);
+
+		return response;
+	}
+	
+	public static GetPasscode validateMasterPinWithLockMobileAMDOCS ()
+	{
+		GetPasscode response = new GetPasscode();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "GetPasscode", false);
+
+		return response;
+	}
+	
+	public static GetPasscode validateMasterPinWithoutLockMobileAMDOCS ()
+	{
+		GetPasscode response = new GetPasscode();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "GetPasscode", false);
+
+		return response;
+	}
+	
+	public static UpdatePasscode changeMasterPINMobileAMDOCS ()
+	{
+		UpdatePasscode response = new UpdatePasscode();
+
+		SetObjectsContents setObject = new SetObjectsContents();		
+		setObject.fillObject(response, "UpdatePasscode", false);
 
 		return response;
 	}

@@ -24,8 +24,10 @@ public final class ATTConstants {
 	//Codigos Carrier
 	public static final int CARRIER_NEXTEL = Integer.parseInt(RESOURCE.getString("CARRIER_NEXTEL"));
 	public static final int CARRIER_IUSACEL = Integer.parseInt(RESOURCE.getString("CARRIER_IUSACEL"));
+	public static final int CARRIER_AMDOCS = Integer.parseInt(RESOURCE.getString("CARRIER_AMDOCS"));
 	public static final String DESC_CARRIER_NEXTEL = RESOURCE.getString("DESC_CARRIER_NEXTEL");
 	public static final String DESC_CARRIER_IUSACEL = RESOURCE.getString("DESC_CARRIER_IUSACEL");
+	public static final String DESC_CARRIER_AMDOCS = RESOURCE.getString("DESC_CARRIER_AMDOCS");
 	
 	//Codigos
 	public static final String VERSION_MY_ATT = RESOURCE.getString("VERSION_MY_ATT");

@@ -15,6 +15,7 @@ import mx.com.att.validator.ValidatorATT;
 import mx.com.att.vo.CustomerVO;
 import mx.com.att.vo.LoginRecordVO;
 import mx.com.att.vo.ResponseVO;
+import mx.com.att.vo.amdocs.ContactPerson;
 import mx.com.att.vo.orange.BalanceInquiryVO;
 import mx.com.att.vo.orange.PaymentBillVO;
 import mx.com.att.vo.orange.ServiceWPVO;
@@ -245,6 +246,19 @@ public class LoginBusiness {
 					responseVO.setMessageCode(ATTConstants.DESC_ERROR_NUM_INV);
 					LOGGER.info("Problemas al consultar la informacion del usuario");
 				}
+				
+			}else if(carrier==280){
+				ContactPerson person= new ContactPerson();
+				person.setName("Emiliano");
+				person.setFirstName("Zapata");
+				person.setLastName("Sanchez");
+				person.setPersonID("0003");
+				person.setPhone("5519515478");
+				
+				responseVO.setCode(ATTConstants.CODIGO_EXITO);
+				responseVO.setMessageCode(ATTConstants.DESC_EXITO);
+				responseVO.setObjectResponse(person);			
+				
 				
 			} else{
 				responseVO.setCode(ATTConstants.CODIGO_ERROR_NUM_INV);
@@ -520,6 +534,11 @@ public class LoginBusiness {
 				responseVO.setCode(ATTConstants.CODIGO_EXITO);
 				responseVO.setMessageCode(ATTConstants.DESC_CARRIER_IUSACEL);
 				responseVO.setObjectResponse(idCarrier);
+				LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
+			}else if(idCarrier == ATTConstants.CARRIER_AMDOCS){
+				responseVO.setCode(ATTConstants.CODIGO_EXITO);
+				responseVO.setMessageCode(ATTConstants.DESC_CARRIER_AMDOCS);
+				responseVO.setObjectResponse(idCarrier);				
 				LOGGER.info("Cadena JSON de salida: " + new Gson().toJson(responseVO));
 			} else{
 				responseVO.setCode(ATTConstants.CODIGO_ERROR_NUM_INV);

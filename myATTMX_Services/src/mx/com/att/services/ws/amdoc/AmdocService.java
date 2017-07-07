@@ -48,6 +48,10 @@ public interface AmdocService {
 	@WebResult(name = RETURN)
 	String getAvailableActionsAMDOCS(@WebParam(name = JSON) String cadenaJson);
 	
+	@WebMethod(operationName="getServicesByChannelMobileAMDOCS")
+    @WebResult(name = RETURN)
+    String getServicesByChannelMobileAMDOCS(@WebParam(name = JSON) String cadenaJson);
+
 	@WebMethod(operationName="getAvailableProductsAMDOCS")
 	@WebResult(name = RETURN)
 	String getAvailableProductsAMDOCS(@WebParam(name = JSON) String cadenaJson);	
@@ -63,4 +67,31 @@ public interface AmdocService {
 	@WebMethod(operationName="getLastTotalBillAMDOCS")
 	@WebResult(name = RETURN)
 	String getLastTotalBillAMDOCS(@WebParam(name = JSON) String cadenaJson);	
+	
+	
+	/******************************/
+	@WebMethod(operationName="getMasterPinQuestionsAMDOCS")
+	@WebResult(name = RETURN)
+	String getMasterPinQuestionsAMDOCS(@WebParam(name = JSON) String cadenaJson);	
+				
+	@WebMethod(operationName="validateMasterPinQuestionsAMDOCS")
+	@WebResult(name = RETURN)
+	String validateMasterPinQuestionsAMDOCS(@WebParam(name = JSON) String cadenaJson);
+	
+	@WebMethod(operationName="changeMasterPINMobileAMDOCS")
+	@WebResult(name = RETURN)
+	String changeMasterPINMobileAMDOCS(@WebParam(name = JSON) String cadenaJson);
+	
+	@WebMethod(operationName="recoverMasterPINMobileAMDOCS")
+	@WebResult(name = RETURN)
+	String recoverMasterPINMobileAMDOCS(@WebParam(name = JSON) String cadenaJson);
+	
+	@WebMethod(operationName="validateMasterPinWithLockMobileAMDOCS")
+	@WebResult(name = RETURN)
+	String validateMasterPinWithLockMobileAMDOCS(@WebParam(name = JSON) String cadenaJson);
+	
+	@WebMethod(operationName="validateMasterPinWithoutLockMobileAMDOCS")
+	@WebResult(name = RETURN)
+	String validateMasterPinWithoutLockMobileAMDOCS(@WebParam(name = JSON) String cadenaJson);
+	
 }

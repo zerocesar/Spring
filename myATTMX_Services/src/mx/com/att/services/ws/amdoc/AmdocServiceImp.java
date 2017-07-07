@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 
 import mx.com.att.business.BillingBalanceAmdocsBusiness;
 import mx.com.att.business.LoginServiceAmdocs;
+import mx.com.att.business.MasterPINAmdocsBusiness;
 import mx.com.att.business.ProductsBussiness;
 import mx.com.att.business.PocketsAccountBusiness;
 
@@ -100,6 +101,13 @@ public class AmdocServiceImp implements AmdocService {
 		return loginBusiness.getAvailableActions(cadenaJson);
 	}
 	
+    @Override
+    public String getServicesByChannelMobileAMDOCS(String cadenaJson){
+            LOGGER.info("Comienza la ejecucion del metodo getServicesByChannelMobileAMDOCS de la clase AmdocServiceImp");
+            final BillingBalanceAmdocsBusiness loginBusiness = new BillingBalanceAmdocsBusiness();
+            return loginBusiness.getServicesByChannelMobileAMDOCS(cadenaJson);
+    }
+   
 	@Override
 	public String getAvailableProductsAMDOCS(String cadenaJson){
 		LOGGER.info("Comienza la ejecucion del metodo getAvailableProductsAMDOCS de la clase AmdocServiceImp");
@@ -135,4 +143,59 @@ public class AmdocServiceImp implements AmdocService {
 
 		return loginBusiness.getLastTotalBill(cadenaJson);
 	}
+	
+	@Override
+	public String getMasterPinQuestionsAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo getMasterPinQuestionsAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();		
+		return masterPINAmdocsBusiness.getMasterPinQuestionsAMDOCS(cadenaJson);
+	}
+	
+	
+	@Override
+	public String validateMasterPinQuestionsAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo validateMasterPinQuestionsAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();
+		
+		return masterPINAmdocsBusiness.validateMasterPinQuestionsAMDOCS(cadenaJson);
+	}
+	
+	@Override
+	public String changeMasterPINMobileAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo changeMasterPINMobileAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();
+		
+		return masterPINAmdocsBusiness.changeMasterPINMobileAMDOCS(cadenaJson);
+	}
+	
+	@Override
+	public String recoverMasterPINMobileAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo recoverMasterPINMobileAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();
+		
+		return masterPINAmdocsBusiness.recoverMasterPINMobileAMDOCS(cadenaJson);
+	}
+	
+	@Override
+	public String validateMasterPinWithLockMobileAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo validateMasterPinWithLockMobileAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();
+		
+		return masterPINAmdocsBusiness.validateMasterPinWithLockMobileAMDOCS(cadenaJson);
+	}
+	
+	@Override
+	public String validateMasterPinWithoutLockMobileAMDOCS(String cadenaJson) {
+		LOGGER.info("Comienza la ejecucion del metodo validateMasterPinWithoutLockMobileAMDOCS de la clase LoginServiceImp");
+		
+		final MasterPINAmdocsBusiness masterPINAmdocsBusiness = new MasterPINAmdocsBusiness();
+		
+		return masterPINAmdocsBusiness.validateMasterPinWithoutLockMobileAMDOCS(cadenaJson);
+	}
+	
 }
